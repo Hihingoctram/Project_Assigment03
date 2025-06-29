@@ -3,21 +3,26 @@ class Fibonacci:
         """
         Tính số Fibonacci.
 
-        :param n: chỉ số (>=0)
-        :param flag:
-            True  -> trả về F(n) bằng đệ quy
-            False -> in dãy từ 0..n (giữ nguyên logic cũ)
+        Tham số:
+        - n (int): chỉ số
+        - flag (bool):
+            + True  → trả về F(n) bằng đệ quy
+            + False → trả về danh sách các số Fibonacci từ 0 đến n (dùng vòng lặp for)
+
+        Trả về:
+        - Số Fibonacci thứ n nếu flag = True
+        - Danh sách số Fibonacci nếu flag = False
         """
         if flag:
-            # ---- ĐỆ QUY ----
+            # Đệ quy
             if n < 2:
                 return n
             return self.fibonacci(n - 1, True) + self.fibonacci(n - 2, True)
         else:
+            # Vòng lặp for
+            fib_sequence = []
             a, b = 0, 1
-            print(f"Dãy Fibonacci đến n = {n}:")
             for _ in range(n + 1):
-                print(a, end=" ")
+                fib_sequence.append(a)
                 a, b = b, a + b
-            print()
-            return None
+            return fib_sequence
