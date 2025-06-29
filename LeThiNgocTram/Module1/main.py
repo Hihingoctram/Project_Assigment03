@@ -1,28 +1,23 @@
 class Fibonacci:
     def fibonacci(self, n, flag):
         """
-        Hàm tính số Fibonacci.
+        Tính số Fibonacci.
 
         Tham số:
-        - n (int): vị trí số Fibonacci (>= 0)
-        - flag (bool): 
-            + True  → trả về số Fibonacci thứ n
-            + False → in dãy Fibonacci từ 0 đến n
+        - n (int): chỉ số
+        - flag (bool):
+            + True  → có thể để trống hoặc return -1 (vì chỉ xử lý False ở impl2)
+            + False → trả về danh sách các số Fibonacci từ 0 đến n (dùng vòng lặp for)
 
         Trả về:
-        - Số Fibonacci thứ n nếu flag = True
-        - None nếu flag = False
+        - Danh sách số Fibonacci nếu flag = False
         """
-        if flag:
+        if not flag:
+            fib_sequence = []
             a, b = 0, 1
-            for _ in range(n):
-                a, b = b, a + b
-            return a
-        else:
-            a, b = 0, 1
-            print(f"Dãy Fibonacci đến n = {n}:")
             for _ in range(n + 1):
-                print(a, end=' ')
+                fib_sequence.append(a)
                 a, b = b, a + b
-            print()
-            return None
+            return fib_sequence
+        else:
+            return -1  # hoặc raise NotImplementedError("Chưa xử lý khi flag=True")
